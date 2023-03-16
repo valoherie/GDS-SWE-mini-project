@@ -1,0 +1,40 @@
+<p-card header="Users" [style]="{'position': 'relative'}">
+    <ng-template pTemplate="header">
+        <div class="upload-button">
+            <button pButton pRipple type="button" label="Upload" class="p-button-rounded"
+                (click)="onUploadFile()"></button>
+        </div>
+    </ng-template>
+    <p-table #tb [columns]="cols" [value]="users" [loading]="loading" [paginator]="true" [rows]="10" [totalRecords]="totalRecords" [lazy]="true" (onLazyLoad)="loadData($event)" 
+        [tableStyle]="{'min-width': '50rem'}" [globalFilterFields]="['name']">
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th pSortableColumn="{{col.header}}" *ngFor="let col of columns">
+                    {{col.header}} <p-sortIcon field="col.header"></p-sortIcon>
+                </th>
+            </tr>
+            <tr>
+                <th></th>
+                <th>
+                    <p-columnFilter field="salary" matchMode="between" display="menu" [showMatchModes]="false"
+                        [showOperator]="false" [showAddButton]="false">
+                        <ng-template pTemplate="filter" let-filter="filterCallback">
+                            <p-slider [ngModel]="minMax" [min]="0.0" [max]="4000.0" [range]="true"
+                                (onSlideEnd)="filter($event.values)"></p-slider>
+                            <div class="flex align-items-center justify-content-center px-2">
+                                Range: {{minMax[0] + ' - ' + minMax[1]}}
+                            </div>
+                        </ng-template>
+                    </p-columnFilter>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr>
+                <td *ngFor="let col of columns">
+                    {{rowData[col.field]}}
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</p-card>
