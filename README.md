@@ -1,0 +1,150 @@
+
+# GDS-SWE-mini-project
+
+
+ This readme will be categorised into 3 sections:
+ 1. Setting Up
+ 2.  Project & Acceptance Criterias runthrough
+ 3.  Current limitation & future enhancements
+   
+   
+ # Setup
+ 
+
+## Spring Boot (REST services)
+
+**
+ I used spring boot and angular for the assignment. 
+ For spring boot,  make sure you have maven setup. I personally am using intellij to run the application. Alternatively, you can use these commands as shown below:
+
+     mvn spring-boot:run
+
+> **IntelliJ:** 
+![image](https://user-images.githubusercontent.com/23149027/225750357-8b72538e-3bb7-4ca4-8305-6974955571cd.png)
+
+
+**
+
+## Angular (UI)
+
+Firstly, run the ***npm install*** command to install the dependencies needed for the project.
+Once the dependencies have finished installing, run the **ng serve** command to start the project.
+
+![image](https://user-images.githubusercontent.com/23149027/225757025-50342868-0fa5-4a64-a003-429933da7cba.png)
+
+
+This is how it will look on **localhost:4200** like when both service and UI are running:
+![enter image description here](https://user-images.githubusercontent.com/23149027/225738276-35845909-91e0-43b7-aa38-bcf0b3434972.png)
+
+
+ #  Project & Acceptance Criterias runthrough
+ 
+## - Acceptance Criteria 1:
+
+ - [x] **When the application starts up, it should be pre-loaded with testable data.**
+	 
+	 As required, the application is pre-loaded with seed data upon running. I am using H2 as the inmemory database. Database will be initialised using the schema.sql      and data.sql scripts.
+
+	DB design:
+    
+    ![](https://user-images.githubusercontent.com/23149027/225742408-c62d851d-9f34-422c-920d-09abbb085586.png)
+	> schema.sql 
+    
+	> ![enter image description
+	> here](https://user-images.githubusercontent.com/23149027/225739198-12916808-982c-4f46-a1fe-676494c0ef08.png)
+    
+	> data.sql 
+    
+    ![enter image description here](https://user-images.githubusercontent.com/23149027/225747110-b4592f17-ef67-4bad-b25d-994c94fc7fcb.png)
+		
+	 When service has started, data will be loaded as shown in H2 database below:
+			![enter image description here](https://user-images.githubusercontent.com/23149027/225742862-1a5d844f-61fc-4ec8-bc54-3ebec0503ecb.png )
+
+    **
+
+ - [x] **Expose /users endpoint that returns users with valid salary (0 <= salary <= 4000)**
+ 
+    ![enter image description here](https://user-images.githubusercontent.com/23149027/225749514-24e79315-d762-4da9-8b10-c3f1b8ca38ad.png)
+
+    UI: users endpoint are presented in a table
+    ![image](https://user-images.githubusercontent.com/23149027/225753529-51ae16af-5c63-422d-b77a-1c31f31cee2e.png)
+
+    **
+
+ - [x] **Additional sub-criterias:**
+    - 1.1: min and max
+
+        If max is 3000, only 1 result is returned, which is John as he earns below $3000 and Mary's salary is $4000 while David's is $3250.6
+        ![image](https://user-images.githubusercontent.com/23149027/225750891-2ec008fb-9c2f-411a-b658-c5facc6d78ea.png)
+
+        If min is 3000, John's salary will not be returned.
+        ![image](https://user-images.githubusercontent.com/23149027/225751234-7b231d7b-e9ee-4bb1-af81-a66e78057576.png)
+
+        UI:
+        A filter has been added in UI to determin the min and max salary:
+
+        ![image](https://user-images.githubusercontent.com/23149027/225753637-c4fa5236-f229-41c8-ab5c-19f65be4c0d0.png)
+
+        Upon clicking the "apply" button: the data will be filtered:
+
+        ![image](https://user-images.githubusercontent.com/23149027/225754084-db4fc101-d47b-414f-820d-1050407be18b.png)
+        ![image](https://user-images.githubusercontent.com/23149027/225754343-80d4e2fa-44ee-4ccc-b9d2-469c7b5c4fb5.png)
+    
+        **
+
+
+    - 1.2: order. Also include illegal order parameters.
+
+        If order is not Name or Salary, IllegalArgumentException will be thrown:
+
+        ![image](https://user-images.githubusercontent.com/23149027/225751564-0313c9e1-c6ec-45ab-a108-796099823122.png)
+
+        If order is sorted by name:
+
+        ![image](https://user-images.githubusercontent.com/23149027/225752457-66a986f2-4720-459f-a9dc-12ee092a5175.png)
+
+        If order is sorted by salary:
+
+        ![image](https://user-images.githubusercontent.com/23149027/225752544-10947f8e-3cc2-4a83-a98d-84791e2aa41b.png)
+
+        In UI, when the "Name" or "Salary" column is clicked on, the column will be sorted in ascending order:
+
+        Unsorted:
+
+         ![image](https://user-images.githubusercontent.com/23149027/225754554-062d3521-d046-4d69-a87d-ab76f3bba7a2.png)
+
+         Name, sorted:
+
+         ![image](https://user-images.githubusercontent.com/23149027/225754662-85e0ae5d-d4f7-47bb-870b-72a9e541315f.png)
+
+         Salary, sorted:
+
+         ![image](https://user-images.githubusercontent.com/23149027/225754765-0eb5fd94-9def-453d-aebc-058b30bfa859.png)
+       
+         **
+         
+    - 1.3: offset and limit.
+
+        offset:
+        first result skipped
+
+        ![image](https://user-images.githubusercontent.com/23149027/225752737-19390386-7b50-4c09-a9bc-6c07c94e5b8f.png)
+
+        limit: 
+        only one result returned
+
+        ![image](https://user-images.githubusercontent.com/23149027/225752827-d6e9b83f-bf74-4094-bd83-17cc0b80cda6.png)
+
+        offset AND limit:
+
+        ![image](https://user-images.githubusercontent.com/23149027/225753375-dbc69cbf-016d-4f8e-9f4d-330a4289cfc6.png)
+
+        **
+        
+## Acceptance Criteria 2: 
+
+
+
+## Acceptance Criteria 3:
+
+**
