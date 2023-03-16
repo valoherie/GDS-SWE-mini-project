@@ -24,6 +24,9 @@ public class UserService {
         if (limit == null) {
             limit = (int) usersRepository.count();
         }
+        if (sort != null && (!sort.equalsIgnoreCase("Name") && !sort.equalsIgnoreCase("Salary"))) {
+            throw new IllegalArgException("Sort only by Name or Salary");
+        }
         if (offset < 0) {
             throw new IllegalArgException("Offset index must not be negative");
         }
