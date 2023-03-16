@@ -3,9 +3,12 @@
 
 
  This readme will be categorised into 3 sections:
- 1. Setting Up
- 2.  Project & Acceptance Criterias runthrough
- 3.  Current limitation & future enhancements
+ 1.  [Setting Up](#setup)
+ 2.  [Project & Acceptance Criterias runthrough](#project-and-acceptance-criterias-runthrough)
+		- [Acceptance Criteria 1](#acceptance-criteria-1)
+		- [Acceptance Criteria 2](#acceptance-criteria-2)
+		- [Acceptance Criteria 3](#acceptance-criteria-3)
+ 3.  [Current limitation & future enhancements](#current-limitation-and-future-enhancements)
    
    
  # Setup
@@ -37,9 +40,9 @@ This is how it will look on **localhost:4200** like when both service and UI are
 ![enter image description here](https://user-images.githubusercontent.com/23149027/225738276-35845909-91e0-43b7-aa38-bcf0b3434972.png)
 
 
- #  Project & Acceptance Criterias runthrough
+ #  Project and Acceptance Criterias runthrough
  
-## - Acceptance Criteria 1:
+## Acceptance Criteria 1:
 
  - [x] **When the application starts up, it should be pre-loaded with testable data.**
 	 
@@ -214,4 +217,4 @@ This is how it will look on **localhost:4200** like when both service and UI are
 	![image](https://user-images.githubusercontent.com/23149027/225761748-d12a2b0d-5b07-4fe0-8131-489a7a33f616.png)
 
 
-# Current limitation & future enhancements
+# Current limitation and future enhancements
