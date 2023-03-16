@@ -218,3 +218,19 @@ This is how it will look on **localhost:4200** like when both service and UI are
 
 
 # Current limitation and future enhancements
+
+## Enhancements
+	- File Upload to allow multiple uploads at a time
+	- Name filtering
+	- Exporting /users as csv file for easy update/creation
+	- UI/UX
+	- Displaying salary as currency in UI
+	- Better exception handling 
+	- Reduce api call frequency from UI
+	
+
+- What kind of testing would you perform on the application in addition to unit testing?
+- How would you scale up the system to handle potentially millions of files?
+- CSV files can be very large and take a long time to process. This can be a problem using HTTP POST calls.
+- How would you update the design to handle HTTP POST requests that can potentially take a long time to
+execute?
