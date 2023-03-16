@@ -103,6 +103,12 @@ This is how it will look on **localhost:4200** like when both service and UI are
     - 1.2: order. Also include illegal order parameters.
 
         If order is not Name or Salary, IllegalArgumentException will be thrown:
+	
+		```
+		if (!sort.equalsIgnoreCase("Name") && !sort.equalsIgnoreCase("Salary")) {
+		    throw new IllegalArgException("Sort only by Name or Salary");
+		}
+		```
 
         ![image](https://user-images.githubusercontent.com/23149027/225751564-0313c9e1-c6ec-45ab-a108-796099823122.png)
 
@@ -220,14 +226,15 @@ This is how it will look on **localhost:4200** like when both service and UI are
 # Current limitation and future enhancements
 
 ## Enhancements
-	- File Upload to allow multiple uploads at a time
-	- Name filtering
-	- Exporting /users as csv file for easy update/creation
-	- UI/UX
-	- Displaying salary as currency in UI
-	- Better exception handling 
-	- Reduce api call frequency from UI
+- File Upload to allow multiple uploads at a time
+- Name filtering
+- Exporting /users as csv file for easy update/creation
+- UI/UX
+- Displaying salary as currency in UI
+- Better exception handling 
+- Reduce api call frequency from UI
 	
+** 
 
 - What kind of testing would you perform on the application in addition to unit testing?
 - How would you scale up the system to handle potentially millions of files?
