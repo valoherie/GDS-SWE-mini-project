@@ -48,8 +48,6 @@ public class UploadService {
                         if (Float.parseFloat(line.get("Salary")) >= 0) {
                             usersEntity1.setSalary((Float.valueOf(line.get("Salary"))));
                             usersRepository.save(usersEntity1);
-                        } else {
-                            throw new IllegalArgumentException(Constants.INVALID_SALARY);
                         }
                     }
                 } else {
@@ -57,8 +55,6 @@ public class UploadService {
                         usersEntity.setName(line.get("Name"));
                         usersEntity.setSalary((Float.valueOf(line.get("Salary"))));
                         users.add(usersEntity);
-                    } else if (Float.parseFloat(line.get("Salary")) < 0) {
-                        throw new IllegalArgumentException(Constants.INVALID_SALARY);
                     }
                 }
             }
