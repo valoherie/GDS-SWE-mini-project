@@ -233,6 +233,7 @@ This is how it will look on **localhost:4200** like when both service and UI are
 - Displaying salary as currency in UI
 - Better exception handling 
 - Reduce api call frequency from UI
+- Setting file size limit for file upload
 	
 ** 
 
