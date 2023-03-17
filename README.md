@@ -35,6 +35,7 @@ Once the dependencies have finished installing, run the **ng serve** command to 
 
 ![image](https://user-images.githubusercontent.com/23149027/225757025-50342868-0fa5-4a64-a003-429933da7cba.png)
 
+For the assignment I have used primeng library for the UI components. Documentation can be found here: https://primeng.org/
 
 This is how it will look on **localhost:4200** like when both service and UI are running:
 ![enter image description here](https://user-images.githubusercontent.com/23149027/225738276-35845909-91e0-43b7-aa38-bcf0b3434972.png)
