@@ -151,7 +151,7 @@ This is how it will look on **localhost:4200** like when both service and UI are
 
         offset AND limit:
 
-        ![image](https://user-images.githubusercontent.com/23149027/225753375-dbc69cbf-016d-4f8e-9f4d-330a4289cfc6.png)
+        ![image](https://user-images.githubusercontent.com/23149027/225842209-0f358c3d-bc5f-43d3-8379-cad762bdb395.png)
 
         **
         
