@@ -68,6 +68,8 @@ This is how it will look on **localhost:4200** like when both service and UI are
 
  - [x] **Expose /users endpoint that returns users with valid salary (0 <= salary <= 4000)**
  
+    Endpoint is created in the User Controller.
+    
     ![enter image description here](https://user-images.githubusercontent.com/23149027/225749514-24e79315-d762-4da9-8b10-c3f1b8ca38ad.png)
 
     UI: users endpoint is integrated and presented in a table
@@ -80,6 +82,9 @@ This is how it will look on **localhost:4200** like when both service and UI are
     **
 
  - [x] **Additional sub-criterias:**
+   
+   Sub-criterias are implemented in the getUsers() method in UserService.java.
+
     - 1.1: min and max
 
         If max is 3000, only 1 result is returned, which is John as he earns below $3000 and Mary's salary is $4000 while David's is $3250.6
@@ -161,6 +166,8 @@ This is how it will look on **localhost:4200** like when both service and UI are
 ## Acceptance Criteria 2: 
 
  - [x] **Upload with a properly structured CSV file. You may include any data in the csv file.**
+
+	Code can be found in UploadService.java. Endpoint is created in Upload Controller.
 
 	If file is not in csv format, an error will be thrown:
 	
