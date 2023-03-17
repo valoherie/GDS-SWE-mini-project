@@ -3,9 +3,12 @@
 
 
  This readme will be categorised into 3 sections:
- 1. Setting Up
- 2.  Project & Acceptance Criterias runthrough
- 3.  Current limitation & future enhancements
+ 1.  [Setting Up](#setup)
+ 2.  [Project & Acceptance Criterias runthrough](#project-and-acceptance-criterias-runthrough)
+		- [Acceptance Criteria 1](#acceptance-criteria-1)
+		- [Acceptance Criteria 2](#acceptance-criteria-2)
+		- [Acceptance Criteria 3](#acceptance-criteria-3)
+ 3.  [Current limitation & future enhancements](#current-limitation-and-future-enhancements)
    
    
  # Setup
@@ -32,14 +35,15 @@ Once the dependencies have finished installing, run the **ng serve** command to 
 
 ![image](https://user-images.githubusercontent.com/23149027/225757025-50342868-0fa5-4a64-a003-429933da7cba.png)
 
+For the assignment I have used primeng library for the UI components. Documentation can be found here: https://primeng.org/
 
 This is how it will look on **localhost:4200** like when both service and UI are running:
 ![enter image description here](https://user-images.githubusercontent.com/23149027/225738276-35845909-91e0-43b7-aa38-bcf0b3434972.png)
 
 
- #  Project & Acceptance Criterias runthrough
+ #  Project and Acceptance Criterias runthrough
  
-## - Acceptance Criteria 1:
+## Acceptance Criteria 1:
 
  - [x] **When the application starts up, it should be pre-loaded with testable data.**
 	 
@@ -66,7 +70,11 @@ This is how it will look on **localhost:4200** like when both service and UI are
  
     ![enter image description here](https://user-images.githubusercontent.com/23149027/225749514-24e79315-d762-4da9-8b10-c3f1b8ca38ad.png)
 
-    UI: users endpoint are presented in a table
+    UI: users endpoint is integrated and presented in a table
+    
+    ![image](https://user-images.githubusercontent.com/23149027/225757793-99799c30-907a-4f5b-89f3-12bbe972a483.png)
+
+    
     ![image](https://user-images.githubusercontent.com/23149027/225753529-51ae16af-5c63-422d-b77a-1c31f31cee2e.png)
 
     **
@@ -96,6 +104,12 @@ This is how it will look on **localhost:4200** like when both service and UI are
     - 1.2: order. Also include illegal order parameters.
 
         If order is not Name or Salary, IllegalArgumentException will be thrown:
+	
+		```
+		if (!sort.equalsIgnoreCase("Name") && !sort.equalsIgnoreCase("Salary")) {
+		    throw new IllegalArgException("Sort only by Name or Salary");
+		}
+		```
 
         ![image](https://user-images.githubusercontent.com/23149027/225751564-0313c9e1-c6ec-45ab-a108-796099823122.png)
 
@@ -143,8 +157,98 @@ This is how it will look on **localhost:4200** like when both service and UI are
         
 ## Acceptance Criteria 2: 
 
+ - [x] **Upload with a properly structured CSV file. You may include any data in the csv file.**
+
+	If file is not in csv format, an error will be thrown:
+	
+	![image](https://user-images.githubusercontent.com/23149027/225758943-d21ee582-2450-4796-a445-70fc4be81d2c.png)
+
+	 Properly structured CSV file with **Name** and **Salary** column, salary column accepts decimal points
+	 
+  	 ![image](https://user-images.githubusercontent.com/23149027/225758847-c775513a-37a2-46f7-899c-bdb0d8980f36.png)
+	 
+	 If upload is successful, it will return success:
+	 
+	 ![image](https://user-images.githubusercontent.com/23149027/225759252-ccdb48fd-9206-43f0-bef6-8c5c619f29c7.png)
+	 
+	 Upload can be done from UI:
+	 
+	 ![image](https://user-images.githubusercontent.com/23149027/225759768-c5b9106a-314c-43b0-b6e8-dbb8765252e6.png)
+
+	 
+	 /users will reflect the new results:
+	 
+	 ![image](https://user-images.githubusercontent.com/23149027/225759530-26fa5d42-bc81-4074-b77b-16676825dad1.png)
+
+	 **
+
+ - [x] **File should include some new data that is not in the database, and some that overwrites the database.**
+	 Harry will be a new record in the database while Tom's data will be overwritten
+	 
+	 ![image](https://user-images.githubusercontent.com/23149027/225759834-93d10af3-9f44-4f91-84e9-a213d18aaab2.png)
+	 
+	 Uploading the file in UI. If the upload is successful it will prompt a success message and upon closing the dialog the grid will show the new results
+	 ![image](https://user-images.githubusercontent.com/23149027/225759964-50ea12ec-8924-496f-87c4-a74d2551607d.png)
+	 
+	 Tom's salary got updated to 1500 while Harry got added to the database:
+	 
+	 ![image](https://user-images.githubusercontent.com/23149027/225760206-ae0e4e8c-50be-4bb7-82a7-6435de5f9f08.png)
+	 
+	 **
+
+ - [x] **File should include rows with negative and 0.00 salary.**
+
+	![image](https://user-images.githubusercontent.com/23149027/225760567-a17f9aaf-f8c7-49c2-9d8b-37eacc9208bb.png)
+	
+	**
+
+ - [x] **/users should work as expected after the upload and that there are new results returned as well as
+	previous results that have been overwritten. Negative rows should be ignored in the input and 0.0
+	should be updated and returned.**
+
+	Upon uploading, the negative row (Apple, -200) did not get added to the database wheareas Mango with 0.0 salary got added to the database.
+
+	![image](https://user-images.githubusercontent.com/23149027/225761020-cb03be79-daec-473b-ac6c-f9e5809ecd80.png)
 
 
+	**	
+	
 ## Acceptance Criteria 3:
 
-**
+ - [x] **Upload with an improperly structured CSV file that should contain at least some good rows. File should be rejected and none of the good rows should have been applied.**
+	 Adding additional column in the csv file:
+	 
+	![image](https://user-images.githubusercontent.com/23149027/225761605-1d3cad2e-909e-494b-adaa-dd8e289baa88.png)
+	
+	Validation is done and error message will be shown in UI when upload fails:
+	![image](https://user-images.githubusercontent.com/23149027/225761748-d12a2b0d-5b07-4fe0-8131-489a7a33f616.png)
+
+
+# Current limitation and future enhancements
+
+## Enhancements
+- File Upload to allow multiple uploads at a time
+- Filtering support for all columns 
+- Exporting /users as csv file for easy update/creation
+- Better exception handling 
+- Reduce api call frequency from UI
+- Setting file size limit for file upload
+- Multithreading for file upload for big data sets 
+- UI/UX
+- Displaying salary as currency in UI
+	
+  ** 
+
+- What kind of testing would you perform on the application in addition to unit testing?
+	- Code Quality Assurance tool such as JFrog, SonarQube
+	- Vulnerability scanning tools such as Nexus
+	- Regression testing tools to ensure the application still functions as expected after any code changes, updates, or improvements
+	- Performance testing
+- How would you scale up the system to handle potentially millions of files?
+	- Server Scaling, Auto-scaling if application is on cloud, and load-balancing for on premise application 
+	- Concurrency design in code, such as multithreading as it saves system memory and improves application performance
+- CSV files can be very large and take a long time to process. This can be a problem using HTTP POST calls.
+- How would you update the design to handle HTTP POST requests that can potentially take a long time to
+execute?
+	- Timeout requests if the requests take too long to finish executing.
+	- Asynchronous process to allow request to execute in the background 
