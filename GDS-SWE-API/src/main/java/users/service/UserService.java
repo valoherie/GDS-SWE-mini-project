@@ -13,6 +13,7 @@ import users.repository.UsersRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 @Service
 public class UserService {
@@ -41,16 +42,16 @@ public class UserService {
         }
         Pageable paging;
         if (sort == null) {
-            paging = PageRequest.of(0, limit);
+            paging = PageRequest.of(0, (int) usersRepository.count());
         } else {
-            paging = PageRequest.of(0, limit, Sort.by(sort.toString()).ascending());
+            paging = PageRequest.of(0, (int) usersRepository.count(), Sort.by(sort.toString()).ascending());
         }
 
         Page<UsersEntity> userEntities = usersRepository.findAll(min, max, paging);
         List<User> users = new ArrayList<>();
 
         //offset - skipping no. of records based on offset param
-        userEntities.stream().skip(offset).forEach(usersEntity -> {
+        userEntities.stream().skip(offset).limit(limit).forEach(usersEntity -> {
            User user = new User();
            user.setName(usersEntity.getName());
            user.setSalary(usersEntity.getSalary());
