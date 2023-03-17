@@ -227,18 +227,27 @@ This is how it will look on **localhost:4200** like when both service and UI are
 
 ## Enhancements
 - File Upload to allow multiple uploads at a time
-- Name filtering
+- Filtering support for all columns 
 - Exporting /users as csv file for easy update/creation
-- UI/UX
-- Displaying salary as currency in UI
 - Better exception handling 
 - Reduce api call frequency from UI
 - Setting file size limit for file upload
+- Multithreading for file upload for big data sets 
+- UI/UX
+- Displaying salary as currency in UI
 	
-** 
+  ** 
 
 - What kind of testing would you perform on the application in addition to unit testing?
+	- Code Quality Assurance tool such as JFrog, SonarQube
+	- Vulnerability scanning tools such as Nexus
+	- Regression testing tools to ensure the application still functions as expected after any code changes, updates, or improvements
+	- Performance testing
 - How would you scale up the system to handle potentially millions of files?
+	- Server Scaling, Auto-scaling if application is on cloud, and load-balancing for on premise application 
+	- Concurrency design in code, such as multithreading as it saves system memory and improves application performance
 - CSV files can be very large and take a long time to process. This can be a problem using HTTP POST calls.
 - How would you update the design to handle HTTP POST requests that can potentially take a long time to
 execute?
+	- Timeout requests if the requests take too long to finish executing.
+	- Asynchronous process to allow request to execute in the background 
